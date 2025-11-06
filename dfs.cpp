@@ -1,42 +1,28 @@
-import java.util.*;
+#include <vector>
+using namespace std;
 
-public class DFS {
-    public static class DFSResult {
-        public int[] timeIn;
-        public int[] timeOut;
-        
-        public DFSResult(int[] timeIn, int[] timeOut) {
-            this.timeIn = timeIn;
-            this.timeOut = timeOut;
-        }
-    }
+pair<vector<int>, vector<int>> dfs(vector<vector<int>>& graph, int start_vertex) {
+    int n = graph.size();
+    vector<bool> visited(n, false);
+    vector<int> time_in(n, 0);
+    vector<int> time_out(n, 0);
+    int timer = 0;
     
-    public static DFSResult dfs(List<List<Integer>> graph, int startVertex) {
-        int n = graph.size();
-        boolean[] visited = new boolean[n];
-        int[] timeIn = new int[n];
-        int[] timeOut = new int[n];
-        int[] timer = {0};
-        
-        dfsRecursive(graph, startVertex, visited, timeIn, timeOut, timer);
-        
-        return new DFSResult(timeIn, timeOut);
-    }
-    
-    private static void dfsRecursive(List<List<Integer>> graph, int v, 
-                                   boolean[] visited, int[] timeIn, 
-                                   int[] timeOut, int[] timer) {
+    function<void(int)> dfs_recursive = [&](int v) {
         visited[v] = true;
-        timeIn[v] = timer[0];
-        timer[0]++;
+        time_in[v] = timer;
+        timer++;
         
-        for (int neighbor : graph.get(v)) {
+        for (int neighbor : graph[v]) {
             if (!visited[neighbor]) {
-                dfsRecursive(graph, neighbor, visited, timeIn, timeOut, timer);
+                dfs_recursive(neighbor);
             }
         }
         
-        timeOut[v] = timer[0];
-        timer[0]++;
-    }
+        time_out[v] = timer;
+        timer++;
+    };
+    
+    dfs_recursive(start_vertex);
+    return {time_in, time_out};
 }
