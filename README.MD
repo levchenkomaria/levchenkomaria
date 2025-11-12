@@ -8,14 +8,19 @@
 ###### 1. Ввод данных
 
 Сначала задаётся список проектов — например, 
-
+```python
   projects = [
-    {resource: 10, profit: 50}, 
-    {resource: 15, profit: 80}, 
-    {resource: 20, profit: 90}, 
-    {resource: 8, profit: 40}
-  ].
 
+    {resource: 10, profit: 50}, 
+
+    {resource: 15, profit: 80}, 
+
+    {resource: 20, profit: 90}, 
+
+    {resource: 8, profit: 40}
+
+  ].
+```
 Также задаётся общий доступный ресурс, например total_resource = 40.
 
 ###### 2. Расчёт эффективности проектов
