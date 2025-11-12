@@ -21,6 +21,7 @@
   Шаг 1.3: Сортировка проектов
 
   Проекты сортируются по убыванию эффективности с использованием функции:
+
     projects_sorted = sorted(projects, 
                            key=lambda x: x['profit'] / x['resource'], 
                            reverse=True)
