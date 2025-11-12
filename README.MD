@@ -13,27 +13,27 @@
 
 ШАГ 2: Сортировка проектов по эффективности
 
-projects_sorted = sorted(projects, key=lambda x: x['efficiency'], reverse=True)
+    projects_sorted = sorted(projects, key=lambda x: x['efficiency'], reverse=True)
 
 Назначение: Проекты упорядочиваются по убыванию значения efficiency. Параметр reverse=True обеспечивает сортировку от наибольшего к наименьшему. Это гарантирует, что наиболее "рентабельные" проекты будут рассматриваться первыми.
 
 ШАГ 3: Жадный выбор проектов
 
-selected_projects = []
+    selected_projects = []
 
-used_resource = 0
+    used_resource = 0
 
-total_profit = 0
+    total_profit = 0
 
-for project in projects_sorted:
+    for project in projects_sorted:
 
-    if used_resource + project['resource'] <= total_resource:
+        if used_resource + project['resource'] <= total_resource:
 
-        selected_projects.append(project)
+            selected_projects.append(project)
 
-        used_resource += project['resource']
+            used_resource += project['resource']
 
-        total_profit += project['profit']
+            total_profit += project['profit']
 
 Назначение:
 
