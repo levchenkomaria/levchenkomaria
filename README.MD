@@ -71,7 +71,7 @@
 
 Алгоритм возвращает кортеж из трех элементов:
 
-return selected_projects, total_profit, used_resource
+  return selected_projects, total_profit, used_resource
 
 Шаг 3.2: Интерпретация результатов
 
