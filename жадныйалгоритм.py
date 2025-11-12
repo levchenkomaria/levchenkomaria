@@ -1,5 +1,5 @@
 
-# Входные данные
+# Р’С…РѕРґРЅС‹Рµ РґР°РЅРЅС‹Рµ
 projects = [
     {"resource": 10, "profit": 50},
     {"resource": 15, "profit": 80},
@@ -7,28 +7,28 @@ projects = [
     {"resource": 8,  "profit": 40}
 ]
 
-total_resource = 40  # общий объем ресурсов
+total_resource = 40  # РѕР±С‰РёР№ РѕР±СЉРµРј СЂРµСЃСѓСЂСЃРѕРІ
 
-# Вычисляем прибыль на единицу ресурса
+# Р’С‹С‡РёСЃР»СЏРµРј РїСЂРёР±С‹Р»СЊ РЅР° РµРґРёРЅРёС†Сѓ СЂРµСЃСѓСЂСЃР°
 for p in projects:
     p["ratio"] = p["profit"] / p["resource"]
 
-# Сортируем проекты по убыванию прибыльности
+# РЎРѕСЂС‚РёСЂСѓРµРј РїСЂРѕРµРєС‚С‹ РїРѕ СѓР±С‹РІР°РЅРёСЋ РїСЂРёР±С‹Р»СЊРЅРѕСЃС‚Рё
 projects.sort(key=lambda x: x["ratio"], reverse=True)
 
 used_resource = 0
 total_profit = 0
 chosen = []
 
-# Жадный выбор проектов
+# Р–Р°РґРЅС‹Р№ РІС‹Р±РѕСЂ РїСЂРѕРµРєС‚РѕРІ
 for p in projects:
     if used_resource + p["resource"] <= total_resource:
-        # Берем проект полностью
+        # Р‘РµСЂРµРј РїСЂРѕРµРєС‚ РїРѕР»РЅРѕСЃС‚СЊСЋ
         used_resource += p["resource"]
         total_profit += p["profit"]
         chosen.append((p["resource"], p["profit"]))
     else:
-        # Если не хватает ресурсов — берем частично (дробный вариант)
+        # Р•СЃР»Рё РЅРµ С…РІР°С‚Р°РµС‚ СЂРµСЃСѓСЂСЃРѕРІ вЂ” Р±РµСЂРµРј С‡Р°СЃС‚РёС‡РЅРѕ (РґСЂРѕР±РЅС‹Р№ РІР°СЂРёР°РЅС‚)
         remain = total_resource - used_resource
         if remain > 0:
             part = remain / p["resource"]
@@ -37,10 +37,10 @@ for p in projects:
             used_resource += remain
         break
 
-# Вывод результата
-print("Выбранные проекты:")
+# Р’С‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚Р°
+print("Р’С‹Р±СЂР°РЅРЅС‹Рµ РїСЂРѕРµРєС‚С‹:")
 for r, pr in chosen:
-    print(f"  - Ресурс = {r}, Прибыль = {pr:.2f}")
+    print(f"  - Р РµСЃСѓСЂСЃ = {r}, РџСЂРёР±С‹Р»СЊ = {pr:.2f}")
 
-print(f"\nОбщий использованный ресурс: {used_resource}")
-print(f"Общая прибыль: {total_profit:.2f}")
+print(f"\nРћР±С‰РёР№ РёСЃРїРѕР»СЊР·РѕРІР°РЅРЅС‹Р№ СЂРµСЃСѓСЂСЃ: {used_resource}")
+print(f"РћР±С‰Р°СЏ РїСЂРёР±С‹Р»СЊ: {total_profit:.2f}")
