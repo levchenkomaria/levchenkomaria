@@ -5,9 +5,9 @@
 
 ШАГ 1: Инициализация и вычисление эффективности
 
-''' for project in projects:
+    for project in projects:
 
-    project['efficiency'] = project['profit'] / project['resource'] '''
+        project['efficiency'] = project['profit'] / project['resource'] '''
 
 Назначение: Для каждого проекта вычисляется показатель efficiency, который представляет собой отношение прибыли к требуемому ресурсу. Это позволяет оценить, насколько эффективно каждый проект использует ограниченные ресурсы.
 
